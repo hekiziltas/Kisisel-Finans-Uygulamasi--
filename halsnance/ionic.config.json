@@ -1,0 +1,7 @@
+{
+  "name": "HEKNANCE",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

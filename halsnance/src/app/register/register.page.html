@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Kayıt Ol</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+  <ion-item>
+    <ion-label>Adınız:</ion-label>
+    <ion-input type="text" [(ngModel)]="formData.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Soyadınız:</ion-label>
+    <ion-input type="text" [(ngModel)]="formData.surname"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Emailiniz:</ion-label>
+    <ion-input type="text" [(ngModel)]="formData.email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Şifreniz:</ion-label>
+    <ion-input type="password" [(ngModel)]="formData.password"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>TCKN:</ion-label>
+    <ion-input type="text" [(ngModel)]="formData.tckn"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Telefon Numaranız:</ion-label>
+    <ion-input type="text" [(ngModel)]="formData.telno"></ion-input>
+  </ion-item>
+  
+  </ion-list>
+  <ion-button expand="full" color="dark" (click)="KayitOl()">
+    Kayıt Ol
+  </ion-button>
+  
+</ion-content>

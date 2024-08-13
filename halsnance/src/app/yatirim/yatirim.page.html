@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Yatırım</ion-title>
+    <ion-button (click)="BackHome()" color="dark" slot="end" expand="block" fill="clear" shape="round">
+      Geri Dön
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="HisseVeri?.result && HisseVeri.result.length">
+    <ion-card-header>
+      <ion-card-title>Borsa İstanbul Verileri</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngFor="let hisse of HisseVeri.result">
+        <p>Adı: {{ hisse.name }}</p>
+        <p>Sembol: {{ hisse.symbol }}</p>
+        <p>Fiyat: {{ hisse.price }}</p>
+        <p>Değişim: {{ hisse.change }}</p>
+        <p>Değişim Yüzdesi: {{ hisse.changePercent }}%</p>
+        <p>Piyasa Değeri: {{ hisse.marketCap }}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

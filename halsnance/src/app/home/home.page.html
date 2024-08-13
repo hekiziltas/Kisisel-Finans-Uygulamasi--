@@ -1,0 +1,38 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu side="start" menuId="first" contentId="main-content">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Menü</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item button (click)="navigateTo('hesaplarim')">Hesaplarım</ion-item>
+          <ion-item button (click)="navigateTo('cuzdan')">Cüzdan</ion-item>
+          <ion-item button (click)="navigateTo('yatirim')">Yatırım</ion-item>
+          <ion-item button (click)="logout()">Çıkış Yap</ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Genel Bakış</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div style="position: relative; height: 50vh; width: 100%;">
+          <canvas id="myChart"></canvas>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <p style="margin: 0; font-size: 1.5rem; font-weight: bold;">{{ balance }} {{ currency }}</p>
+          </div>
+        </div>
+      </ion-content>
+    </div>
+  </ion-split-pane>
+</ion-app>

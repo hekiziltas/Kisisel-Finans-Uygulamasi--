@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hesaplarım</ion-title>
+    <ion-button (click)="BackHome()" slot="end" expand="block" fill="clear" color="dark" shape="round">
+      Geri Dön
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let hesap of hesaplar" [formGroup]="hesapForm">
+      <ion-label>
+        <h2>{{ hesap.hesap_no }}</h2>
+        <p>{{ hesap.hesap_turu }}</p>
+      </ion-label>
+      <ion-button (click)="fillUpdateForm(hesap)" color="primary">Hesabı Güncelle</ion-button>
+      <ion-button (click)="deleteHesap(hesap)" color="danger">Hesabı Sil</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" (click)="showCreateForm()" color="primary">Yeni Hesap Oluştur</ion-button>
+  <form *ngIf="showCreate" [formGroup]="hesapForm" (ngSubmit)="submitForm()">
+    <ion-item>
+      <ion-label position="floating">Hesap Numarası</ion-label>
+      <ion-input formControlName="hesap_no" type="text" placeholder="Hesap Numarası"></ion-input>
+    </ion-item>
+    <div *ngIf="hesapForm.get('hesap_no')?.hasError('required') && (hesapForm.get('hesap_no')?.dirty || hesapForm.get('hesap_no')?.touched)">
+      <small class="error">Hesap Numarası gereklidir.</small>
+    </div>
+    <div *ngIf="hesapForm.get('hesap_no')?.hasError('pattern') && (hesapForm.get('hesap_no')?.dirty || hesapForm.get('hesap_no')?.touched)">
+      <small class="error">Hesap Numarası sadece rakamlardan oluşmalıdır.</small>
+    </div>
+
+    <ion-item>
+      <ion-label>Hesap Türü</ion-label>
+    </ion-item>
+    <ion-radio-group formControlName="hesap_turu">
+      <ion-item>
+        <ion-label>Banka</ion-label>
+        <ion-radio slot="start" value="Banka"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Kredi</ion-label>
+        <ion-radio slot="start" value="kredi"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+    <ion-button expand="full" (click)="submitForm()" [disabled]="!hesapForm.valid">Hesap Oluştur</ion-button>
+
+  </form>
+  
+  <form *ngIf="showUpdateForm" [formGroup]="hesapForm" (ngSubmit)="submitUpdate()">
+    <ion-item>
+      <ion-label position="floating">Hesap Numarası</ion-label>
+      <ion-input formControlName="hesap_no" type="text" placeholder="Hesap Numarası"></ion-input>
+    </ion-item>
+    <div *ngIf="hesapForm.get('hesap_no')?.hasError('required') && (hesapForm.get('hesap_no')?.dirty || hesapForm.get('hesap_no')?.touched)">
+      <small class="error">Hesap Numarası gereklidir.</small>
+    </div>
+    <div *ngIf="hesapForm.get('hesap_no')?.hasError('pattern') && (hesapForm.get('hesap_no')?.dirty || hesapForm.get('hesap_no')?.touched)">
+      <small class="error">Hesap Numarası TR ile başlamalı ve sadece rakamlardan oluşmalıdır.</small>
+    </div>
+  
+    <ion-item>
+      <ion-label>Hesap Türü</ion-label>
+    </ion-item>
+    <ion-radio-group formControlName="hesap_turu">
+      <ion-item>
+        <ion-label>Banka</ion-label>
+        <ion-radio slot="start" value="Banka"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Kredi</ion-label>
+        <ion-radio slot="start" value="kredi"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  
+    <ion-button expand="full" type="submit" [disabled]="!hesapForm.valid">Güncelle</ion-button>
+  </form>
+  
+</ion-content>
